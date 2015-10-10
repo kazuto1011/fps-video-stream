@@ -48,7 +48,7 @@
   <!-- ########################## -->
   <!-- ## Launch the 1st Xtion ## -->
   <!-- ########################## -->
-  
+
   <arg name="camera" default="xtion1" />
   <arg name="rgb_frame_id"   default="$(arg camera)_rgb_optical_frame" />
   <arg name="depth_frame_id" default="$(arg camera)_depth_optical_frame" />
@@ -56,7 +56,7 @@
 
   <!-- Push down all topics/nodelets into "camera" namespace -->
   <group ns="$(arg camera)">
-  
+
 	  <!-- Start nodelet manager -->
 	  <arg name="manager" value="$(arg camera)_nodelet_manager" />
 	  <arg name="debug" default="false" /> <!-- Run manager in GDB? -->
@@ -114,7 +114,7 @@
   <!-- ########################## -->
   <!-- ## Launch the 2nd Xtion ## -->
   <!-- ########################## -->
-  
+
   <arg name="camera2" default="xtion2" />
   <arg name="rgb_frame_id2"   default="$(arg camera2)_rgb_optical_frame" />
   <arg name="depth_frame_id2" default="$(arg camera2)_depth_optical_frame" />
@@ -122,7 +122,7 @@
 
   <!-- Push down all topics/nodelets into "camera" namespace -->
   <group ns="$(arg camera2)">
-  
+
     <!-- Start nodelet manager -->
     <arg name="manager" value="$(arg camera2)_nodelet_manager" />
     <arg name="debug" default="false" /> <!-- Run manager in GDB? -->

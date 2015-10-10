@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>multiple_xtion_launch_test</name>
+  <version>0.0.0</version>
+  <description>The multiple_xtion_launch_test package</description>
+
+  <maintainer email="k_nakashima@irvs.ait.kyushu-u.ac.jp">kazuto1011</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>rgbd_launch</run_depend>
+  <run_depend>depth_image_proc</run_depend>
+  <run_depend>image_proc</run_depend>
+  <run_depend>nodelet</run_depend>
+  <run_depend>openni2_camera</run_depend>
+  <run_depend>tf</run_depend>
+
+</package>

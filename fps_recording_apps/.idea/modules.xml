@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/fps_recording_apps.iml" filepath="$PROJECT_DIR$/fps_recording_apps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fps_recording_moverio/fps_recording_moverio.iml" filepath="$PROJECT_DIR$/fps_recording_moverio/fps_recording_moverio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fps_recording_wearables/fps_recording_wearables.iml" filepath="$PROJECT_DIR$/fps_recording_wearables/fps_recording_wearables.iml" />
+    </modules>
+  </component>
+</project>

@@ -18,7 +18,7 @@ class RGBDRecorder(mp.Process):
         self.device_id = device_id
         self.bridge = CvBridge()
 
-    # def run(self): #this doesnt work
+    # def run(self): #doesnt work
         cv2.namedWindow("rgb%d" % self.device_id, cv2.CV_WINDOW_AUTOSIZE)
         self.rgb_subscriber = rp.Subscriber(RGB_TOPIC_NAME % self.device_id, Image, self.rgb_callback)
         cv2.namedWindow("depth%d" % self.device_id, cv2.CV_WINDOW_AUTOSIZE)

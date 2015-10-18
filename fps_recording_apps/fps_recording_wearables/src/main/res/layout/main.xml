@@ -3,11 +3,19 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:weightSum="1">
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="Hello World, FpsRecordingWearables"
     />
+
+    <org.ros.android.view.camera.RosCameraPreviewView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/camera_view">
+
+    </org.ros.android.view.camera.RosCameraPreviewView>
+
 </LinearLayout>
 

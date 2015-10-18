@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="1">
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, FpsRecordingWearables"
-    />
 
     <org.ros.android.view.camera.RosCameraPreviewView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/camera_view">
+        android:id="@+id/camera_view" />
 
-    </org.ros.android.view.camera.RosCameraPreviewView>
+    <TextView
+        android:id="@+id/rec_info"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Recording first-person vison..."
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:id="@+id/textView" />
+
+</RelativeLayout>
 

@@ -8,7 +8,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.ros.address.InetAddressFactory;
@@ -26,12 +25,11 @@ public class FpsRecordingWearables extends RosActivity
     private Camera camera;
     private int cameraId = 0;
     private RosCameraPreviewView rosCameraPreviewView;
-    private TextView textView;
     private Handler handler;
     private Context context = this;
 
     public FpsRecordingWearables() {
-        super("FpsRecordingWarables", "FpsRecordingWearables", URI.create("http://192.168.4.77:11311"));
+        super("FpsRecordingWarables", "FpsRecordingWearables", URI.create("http://192.168.4.58:11311"));
     }
 
     @Override
@@ -44,14 +42,13 @@ public class FpsRecordingWearables extends RosActivity
         setContentView(R.layout.main);
 
         rosCameraPreviewView = (RosCameraPreviewView)findViewById(R.id.camera_view);
-        textView = (TextView)findViewById(R.id.rec_info);
 
-        numberOfCameras = Camera.getNumberOfCameras();
-        if (numberOfCameras > 1) {
-            cameraId = (cameraId + 1) % numberOfCameras;
-            rosCameraPreviewView.releaseCamera();
-            rosCameraPreviewView.setCamera(Camera.open(cameraId));
-        }
+//        numberOfCameras = Camera.getNumberOfCameras();
+//        if (numberOfCameras > 1) {
+//            cameraId = (cameraId + 1) % numberOfCameras;
+//            rosCameraPreviewView.releaseCamera();
+//            rosCameraPreviewView.setCamera(Camera.open(cameraId));
+//        }
 
         handler = new Handler() {
             @Override
@@ -65,15 +62,22 @@ public class FpsRecordingWearables extends RosActivity
     @Override
     protected void init(NodeMainExecutor nodeMainExecutor) {
         Log.d(TAG, "init camera ID:" + cameraId);
+
         camera = Camera.open(cameraId);
+        Camera.Parameters params = camera.getParameters();
+        params.setPictureSize(640 / 2, 480 / 2);
+        params.setPreviewSize(640 / 2, 480 / 2);
+        camera.setParameters(params);
 
         int fps[] = new int[2];
         camera.getParameters().getPreviewFpsRange(fps);
 
         String info = "";
-        info += "Frame rate: " + String.valueOf(fps[1]/1000);
+        info += "Frame rate: " + String.valueOf(fps[1] / 1000);
         info += "\nWidth: " + camera.getParameters().getPreviewSize().width;
         info += "\nHeight: " + camera.getParameters().getPreviewSize().height;
+        info += "\nWidth: " + rosCameraPreviewView.getWidth();
+        info += "\nHeight: " + rosCameraPreviewView.getHeight();
 
         Message msg = handler.obtainMessage(0, info);
         handler.sendMessage(msg);
@@ -83,6 +87,6 @@ public class FpsRecordingWearables extends RosActivity
         NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(InetAddressFactory.newNonLoopback().getHostAddress());
         nodeConfiguration.setMasterUri(getMasterUri());
 
-        nodeMainExecutor.execute(rosCameraPreviewView, nodeConfiguration.setNodeName("M100"));
+        nodeMainExecutor.execute(rosCameraPreviewView, nodeConfiguration.setNodeName("wearables"));
     }
 }
